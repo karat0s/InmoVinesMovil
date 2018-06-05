@@ -84,10 +84,10 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="2.0.5" />
     <plugin name="cordova-plugin-safariviewcontroller" spec="^1.5.3" />
     <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
-        <variable name="URL_SCHEME" value="{com.inmovinesmovil}" />
-        <variable name="ANDROID_SCHEME" value="{com.inmovinesmovil}" />
+        <variable name="URL_SCHEME" value="com.inmovinesmovil" />
+        <variable name="ANDROID_SCHEME" value="com.inmovinesmovil" />
         <variable name="ANDROID_HOST" value="karatos.eu.auth0.com" />
-        <variable name="ANDROID_PATHPREFIX" value="/cordova/{com.inmovinesmovil}/callback" />
+        <variable name="ANDROID_PATHPREFIX" value="/cordova/com.inmovinesmovil/callback" />
     </plugin>
     <engine name="android" spec="~7.0.0" />
 </widget>
