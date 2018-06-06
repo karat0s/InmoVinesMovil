@@ -4,6 +4,7 @@ import { ClienteProvider } from './../../providers/cliente/cliente.provider';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login.provider';
+import { LoginPage } from '../login/login';
 
 
 
@@ -30,6 +31,10 @@ export class HomePage {
       this.inmueble = result;
       console.log(this.inmueble);
     });
+  }
+
+  exit(){
+    this.navCtrl.push(LoginPage);
   }
 
 

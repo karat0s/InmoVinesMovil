@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>Mis inmuebles</ion-title>
+    <p float-right class="exit"><ion-icon ios="ios-exit" md="md-exit" (click)="exit()"></ion-icon> <strong>Salir</strong></p>
   </ion-navbar>
 </ion-header>
 
@@ -46,6 +47,7 @@
         </ion-col>
         <ion-col>
           <ion-badge class="font20" *ngIf="inmuebles.caracteristicas.ascensor">
+            <i class="fas fa-wheelchair"></i>
           </ion-badge>
         </ion-col>
         <ion-col>

@@ -14,7 +14,7 @@ page-home {
         width: 50%;
     }
     ion-card{
-        margin-bottom: 3%;
+        margin-top: -3%;
     }
     ion-card-header{
         background-color: #6E3593;
@@ -28,6 +28,11 @@ page-home {
     }
     .refFont{
         color: gray;
+    }
+    .exit{
+        color: white;
+        margin-top: -5%;
+        margin-right: 3%;
     }
 
 }
