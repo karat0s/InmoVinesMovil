@@ -1,7 +1,10 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>Mis inmuebles</ion-title>
-    <p float-right class="exit"><ion-icon ios="ios-exit" md="md-exit" (click)="exit()"></ion-icon> <strong>Salir</strong></p>
+    <p float-right class="exit">
+      <ion-icon ios="ios-exit" md="md-exit" (click)="exit()"></ion-icon>
+      <strong>Salir</strong>
+    </p>
   </ion-navbar>
 </ion-header>
 
@@ -14,18 +17,23 @@
     En esta pantalla puede ver un listado de todos sus inmuebles
   </p>
 
-  <ion-card *ngFor="let inmuebles of inmueble">
+  <ion-card *ngFor="let inmuebles of inmueble; let i = index">
     <ion-card-header color="light">
       <strong>{{inmuebles.localizacion.comunidad.comunidad}}</strong>: {{inmuebles.localizacion.zona.nombre}}
+      <button ion-button float-right (click)="verIncidencias(inmuebles.id)">
+        <ion-icon ios="ios-alert" md="md-alert"></ion-icon>
+      </button>
     </ion-card-header>
-    <img src="../../assets/imgs/JPG_300.jpg" />
+    <img src="../../assets/imgs/foto_{{i}}.JPG" />
     <ion-card-content>
       <p class="colorTipoPiso">
         <strong>{{inmuebles.tipos.nombre}}
           <i class="fas fa-bed margin-icon-left"></i>{{inmuebles.caracteristicas.nHabitaciones}}
         </strong>
       </p>
-      <p class="refFont"><small>Ref. {{inmuebles.referencia}}</small></p>
+      <p class="refFont">
+        <small>Ref. {{inmuebles.referencia}}</small>
+      </p>
       <hr/>
       <p class="colorTipoPiso">
         <strong>{{inmuebles.precioCompra}}€</strong>

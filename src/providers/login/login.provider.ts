@@ -15,6 +15,7 @@ export class LoginProvider {
 
   apiUrlLogin = 'http://localhost:8080/admin/clientes/login';
   apiUrlGetDatos = 'http://localhost:8080/admin/cliente/'
+  apiUrlGetIncidencias = 'http://localhost:8080/admin/incidencias/inmueble/'
   cliente: Clientes;
   user: 'admin1';
   secret: 'adminsecret';
@@ -38,10 +39,7 @@ login (email, pass): Observable <any> {
     .set('email', email)
     .set('pass', pass);
 
-  return this.http.post(this.apiUrlLogin, body.toString(),
-          {
-            headers: this.requestHeaders
-          })
+  return this.http.post(this.apiUrlLogin, body.toString(),{headers: this.requestHeaders});
 
   }
 
@@ -50,5 +48,10 @@ listInmuebles (id): Observable <any> {
   return this.http.get(`${this.apiUrlGetDatos}${id}/inmuebles`, {headers:this.requestHeadersGet});
 }
 
+
+listIncidencias (id): Observable <any> {
+
+  return this.http.get(`${this.apiUrlGetIncidencias}${id}`, { headers: this.requestHeadersGet });
+}
 
 }

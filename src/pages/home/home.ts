@@ -21,7 +21,6 @@ export class HomePage {
               public navParams: NavParams, 
               public loginProvider: LoginProvider,
               public cliente: ClienteProvider) {
-
   }
 
   ionViewDidLoad() {
@@ -35,6 +34,12 @@ export class HomePage {
 
   exit(){
     this.navCtrl.push(LoginPage);
+  }
+
+  verIncidencias(id) {
+    this.loginProvider.listIncidencias(id).subscribe((result) => {
+      console.log(result);
+    })
   }
 
 
