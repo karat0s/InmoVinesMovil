@@ -5,12 +5,108 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
   <p>
-    This starter project comes with simple tabs-based layout for apps that are going to primarily use a Tabbed UI.
+    Bienvenido de nuevo
+    <strong>Dani</strong>
   </p>
   <p>
-    Take a look at the
-    <code>src/pages/</code> directory to add or change tabs, update any existing page or create new pages.
+    En esta pantalla puede ver un listado de todos sus inmuebles
   </p>
+
+  <ion-card *ngFor="let inmuebles of inmueble">
+    <ion-card-header color="light">
+      <strong>{{inmuebles.localizacion.comunidad.comunidad}}</strong>: {{inmuebles.localizacion.zona.nombre}}
+    </ion-card-header>
+    <img src="../../assets/imgs/JPG_300.jpg" />
+    <ion-card-content>
+      <p class="colorTipoPiso">
+        <strong>{{inmuebles.tipos.nombre}}
+          <i class="fas fa-bed margin-icon-left"></i>{{inmuebles.caracteristicas.nHabitaciones}}
+        </strong>
+      </p>
+      <p class="refFont"><small>Ref. {{inmuebles.referencia}}</small></p>
+      <hr/>
+      <p class="colorTipoPiso">
+        <strong>{{inmuebles.precioCompra}}€</strong>
+        <ion-badge item-end float-right>{{inmuebles.caracteristicas.m2Utiles}}m
+          <sup>2</sup>
+        </ion-badge>
+      </p>
+      <hr/>
+      <ion-row>
+        <ion-col>
+          <ion-badge class="font20">
+            <i class="fas fa-bath margin-icon-left"></i> {{inmuebles.caracteristicas.nBanos}}
+          </ion-badge>
+        </ion-col>
+        <ion-col>
+          <ion-badge class="font20" *ngIf="inmuebles.caracteristicas.garaje">
+            <i class="fas fa-car"></i>
+          </ion-badge>
+        </ion-col>
+        <ion-col>
+          <ion-badge class="font20" *ngIf="inmuebles.caracteristicas.ascensor">
+          </ion-badge>
+        </ion-col>
+        <ion-col>
+          <ion-badge class="font20">
+            <i class="fas fa-bolt"></i> {{inmuebles.caracteristicas.eficienciaEnergeticaTipo}}
+          </ion-badge>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
+
+<!-- 
+
+  <div class="card inmuebleCard">
+    <a href="inmueble/V3470X" target="_blank">
+      <div class="card-header bg-danger">
+    
+        <p ng-if="(i.inmueble.poblacion.length + i.inmueble.zona.length)<25" class="typo-lato-regular header-tittle ng-scope">
+          <b class="ng-binding">Móstoles: Parque Coimbra</b>
+        </p>
+
+      </div>
+
+      <img ng-if="i.fotos.length!=0" class="img-fluid card-img-top cardImage ng-scope" src="/inmuebles/V3470B/V3470B1c8763890fd6cb98c97fc42b52bd0560.jpg">
+
+  
+      <div class="card-body">
+  
+        <p class="typo-lato-regular tittle desc-inmueble no-margin ng-binding">Casa/Chalet
+          <span ng-if="i.inmueble.nHabitaciones > 0" class="text-secondary ng-binding ng-scope"> 4
+            <i class="fa fa-bed" aria-hidden="true"></i>
+          </span>
+        </p>
+        <p>
+          <span class="nm-soft-gray subtittle ng-binding">Ref. V3470X</span>
+        </p>
+        <hr>
+        <p class="typo-lato-regular text-detail nm-red">
+              <span class="precio ng-binding ng-scope" ng-if="i.inmueble.gestion==1">470,000</span>
+        
+          <span class="precio">€</span>
+          <span class="pull-right badge badge-danger p-2 ng-binding">369m
+            <sup>2</sup>
+          </span>
+        </p>
+      </div>
+      <div class="text-center p-2 card-footer">
+        <div class="w-100">
+          <div class="badge badge-danger m-1 ng-binding">
+            <i class="custom-icon-inmueble habitaciones-icon card-badge"></i> 4</div>
+          <div class="badge badge-danger m-1 ng-binding">
+            <i class="custom-icon-inmueble aseos-icon card-badge"></i> 4</div>
+         
+          <div ng-if="i.inmueble.garaje01==1" class="badge badge-danger m-1 ng-scope">
+            <i class="custom-icon-inmueble garaje-icon card-badge"></i>
+          </div>
+      
+        </div>
+      </div>
+    </a>
+  </div>
+-->

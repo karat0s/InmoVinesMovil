@@ -1,5 +1,11 @@
+import { Clientes } from './../../clases/clientes';
+import { Inmuebles } from './../../clases/Inmuebles';
+import { ClienteProvider } from './../../providers/cliente/cliente.provider';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { LoginProvider } from '../../providers/login/login.provider';
+
+
 
 @Component({
   selector: 'page-home',
@@ -7,8 +13,25 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  inmueble: Inmuebles;
+  clientes: Clientes;
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public loginProvider: LoginProvider,
+              public cliente: ClienteProvider) {
 
   }
+
+  ionViewDidLoad() {
+
+    console.log(this.cliente.cliente);
+    this.loginProvider.listInmuebles(this.cliente.cliente.id).subscribe((result) => {
+      this.inmueble = result;
+      console.log(this.inmueble);
+    });
+  }
+
+
 
 }

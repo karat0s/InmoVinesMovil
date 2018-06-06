@@ -1,6 +1,9 @@
+import { ClienteProvider } from './../../providers/cliente/cliente.provider';
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { LoginProvider } from '../../providers/login/login.provider';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,10 +18,15 @@ import { AlertController } from 'ionic-angular';
 })
 export class LoginPage {
 
-  public email = '';
-  public contra = '';
+  public email:'';
+  public contra:'';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public alertCtrl: AlertController, 
+              public login: LoginProvider, 
+              public toast: ToastController,
+              public cliente: ClienteProvider) {
   }
 
   ionViewDidLoad() {
@@ -27,18 +35,15 @@ export class LoginPage {
 
   inicioSesion() {
 
-    if (this.email.length === 0 || this.contra.length === 0) {
-
-      let alert = this.alertCtrl.create({
-        title: 'Campos vacíos',
-        message: 'Por favor, rellene correctamente todos los campos antes de iniciar sesión',
-        buttons: ['OK']
-      });
-
-      alert.present();
-    }
-
+    this.login.login(this.email, this.contra).subscribe((result) => {
+      this.cliente.cliente = result;
+      this.navCtrl.setRoot(HomePage);
+    }, (err) => {
+      console.log(err);
+      }
+    );
 
   }
+
 
 }
